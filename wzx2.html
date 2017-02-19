@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    
+</head>
+<body>
+    <h1>分时段搜索行为统计</h1>
+	<div id="main1" style="width:1200px;height:500px;border:1px solid #ccc; padding:10px"></div>
+	<h1>重要搜索关键词</h1>
+	<div id="main2" style="width:1200px;height:500px;border:1px solid #ccc; padding:10px"></div>
+	<h1>重点关注客户</h1>
+	<div id="main3" style="width:1200px;height:700px;border:1px solid #ccc; padding:10px"></div>
+	<script src="https://ecomfe.github.io/echarts/build/dist/echarts.js"></script>
+	<script src="https://ecomfe.github.io/echarts/build/dist/echarts-all.js"></script>
+	
+<script type="text/javascript">
+	
+	//路径配置
+	require.config({
+		paths: {
+			echarts: 'https://ecomfe.github.io/echarts/build/dist'
+		}
+	});
+	 
+	 //使用
+	require(
+        [
+            'echarts',
+            'echarts/theme/macarons',			
+            'echarts/chart/bar',
+            'echarts/chart/line'
+        ],
+        
+		
+		
+		function (ec) {
+            //--- 折柱 ---
+
+			
+			
+				var myChart1 = echarts.init(document.getElementById('main1'),'macarons')
+				
+				var option1 = {   		
+					timeline : {   
+						data:[  
+							 '5-19','5-20','5-21','5-22','5-23','5-24','5-25'  
+							],  
+						label:{  
+							formatter : function(s) {  
+							return s.slice(0, 4);  
+						  }  
+						},  
+						height:80,  
+						x:50,  
+						padding:[40,10,10,10],   
+						autoPlay : true,  
+						playInterval : 2000  
+					},  
+					options : [  
+						{  
+						  title:{    
+							text:'20160519（周四）每小时搜索统计',    
+							subtext:'by顾全'    
+						  },     
+						toolbox: {
+							show : true,
+							feature : {
+								dataView : {show: true, readOnly: false},
+								magicType : {show: true, type: ['line', 'bar']},
+								restore : {show: true},
+								saveAsImage : {show: true}
+							}
+						},
+						calculable : true,							  
+						  tooltip: {    
+							show: true    
+						  },     
+						  legend: {    
+							data:['view数量','query数量']    
+						  },        
+						  xAxis : [    
+							{    
+							  type : 'category',    
+							  data : ["0点","1点","2点","3点","4点","5点","6点","7点","8点","9点","10点","11点","12点","13点","14点","15点","16点","17点","18点","19点","20点","21点","22点","23点"],  
+							  axisLabel:{  
+								margin:-20,  
+								textStyle:{  
+								  color:'#999',  
+								  fontWeight:'bold'  
+							   }  
+							 }  
+							}    
+						  ],    
+						  yAxis : [    
+							{    
+							  type : 'value' ,
+							  name:'次数'
+							}    
+						  ],    
+						  series : [  
+							{  
+							  name:'view数量',
+							  type:'line',  
+							  data:[213,  82,  74,  71, 108,  75, 110, 102, 247, 478, 586, 429, 492, 553, 732, 649, 705, 538, 321, 297, 353, 318, 344, 223],     
+							  markLine : {    
+								data : [    
+								  {type : 'average', name: '平均值'}    
+								]    
+							  },        
+							  markPoint : {    
+								data : [    
+								  {type : 'max', name: '最大值'},    
+								  {type : 'min', name: '最小值'}    
+								]    
+							  }    
+							},  
+							{  
+							  name:'query数量',
+							  type:'line',  
+							  data:[3034, 3081, 2827, 3312, 3250, 3940, 3632, 3505, 3317, 2493, 2423, 2339, 2174, 2352, 2462, 3112, 2301, 3166, 2290, 2109, 3656, 2215, 2618, 2956],     
+							  markLine : {    
+								data : [    
+								  {type : 'average', name: '平均值'}    
+								]    
+							  },     
+							  markPoint : {    
+								data : [    
+								  {type : 'max', name: '最大值'},    
+								  {type : 'min', name: '最小值'}    
+								]    
+							  }    
+							}  
+						  ]  
+						},  
+					  
+						{  
+						  title:{    
+							text:'20160520（周五）每小时搜索统计',    
+							subtext:'by顾全'    
+						  },    
+						  series : [  
+							{  
+							  name:'view数量',
+							  type:'line',  
+							  data:[173,117,100,105,76,100,138,76,126,170,230,144,157,157,217,170,194,180,146,157,194,162,198,219],     
+							  markLine : {    
+								data : [    
+								  {type : 'average', name: '平均值'}    
+								]    
+							  },       
+							  markPoint : {    
+								data : [    
+								  {type : 'max', name: '最大值'},    
+								  {type : 'min', name: '最小值'}    
+								]    
+							  }    
+							},
+							{  
+							  name:'query数量',
+							  type:'line',  
+							  data:[3320,3445,4035,2919,3137,3546,3332,3047,2697,2564,2436,2199,2221,2340,2626,2051,2066,1946,1834,1783,2003,1967,2691,4924],     
+							  markLine : {    
+								data : [    
+								  {type : 'average', name: '平均值'}    
+								]    
+							  },      
+							  markPoint : {    
+								data : [    
+								  {type : 'max', name: '最大值'},    
+								  {type : 'min', name: '最小值'}    
+								]    
+							  }    
+							}
+						  ]  
+						},  
+						{  
+						  title:{    
+							text:'20160521（周六）每小时搜索统计',    
+							subtext:'by顾全'    
+						  },    
+						  series : [  
+							{  
+							  name:'view数量',
+							  type:'line',  
+							  data:[149,95,88,81,58,83,108,230,163,263,388,267,171,235,248,245,284,220,201,201,156,258,307,260],     
+							  markLine : {    
+								data : [    
+								  {type : 'average', name: '平均值'}    
+								]    
+							  },       
+							  markPoint : {    
+								data : [    
+								  {type : 'max', name: '最大值'},    
+								  {type : 'min', name: '最小值'}    
+								]    
+							  }    
+							}, 
+							{  
+							  name:'query数量',
+							  type:'line',  
+							  data:[5354,5836,4743,4747,4537,4710,4886,4818,4450,4548,4527,3403,3242,2801,2775,2388,2292,2621,2078,2039,2019,2489,4028,3101],    
+							  markLine : {    
+								data : [    
+								  {type : 'average', name: '平均值'}    
+								]    
+							  },        
+							  markPoint : {    
+								data : [    
+								  {type : 'max', name: '最大值'},    
+								  {type : 'min', name: '最小值'}    
+								]    
+							  }    
+							}  							
+						  ]  
+						},  		
+						{  
+						  title:{    
+							text:'20160522（周日）每小时搜索统计',    
+							subtext:'by顾全'    
+						  },    
+						  series : [  
+							{  
+							  name:'view数量',
+							  type:'line',  
+							  data:[167,120,172,75,102,106,151,162,207,174,187,247,271,221,212,235,188,154,137,232,189,200,254,219],     
+							  markLine : {    
+								data : [    
+								  {type : 'average', name: '平均值'}    
+								]    
+							  },      
+							  markPoint : {    
+								data : [    
+								  {type : 'max', name: '最大值'},    
+								  {type : 'min', name: '最小值'}    
+								]    
+							  }    
+							},
+							{  
+							  name:'query数量',
+							  type:'line',  
+							  data:[3382,3124,3467,3618,3118,3047,3387,3468,3755,3204,3712,3032,3349,3635,3009,2913,3789,3633,4028,2747,3407,3557,3859,3794],     
+							  markLine : {    
+								data : [    
+								  {type : 'average', name: '平均值'}    
+								]    
+							  },        
+							  markPoint : {    
+								data : [    
+								  {type : 'max', name: '最大值'},    
+								  {type : 'min', name: '最小值'}    
+								]    
+							  }    
+							} 							
+						  ]  
+						},  	  
+						{  
+						  title:{    
+							text:'20160523（周一）每小时搜索统计',    
+							subtext:'by顾全'    
+						  },    
+						  series : [  
+							{  
+							  name:'view数量',
+							  type:'line',  
+							  data:[140,106,142,79,88,126,157,139,187,228,279,315,287,331,259,270,210,188,201,208,211,218,272,223],     
+							  markLine : {    
+								data : [    
+								  {type : 'average', name: '平均值'}    
+								]    
+							  },        
+							  markPoint : {    
+								data : [    
+								  {type : 'max', name: '最大值'},    
+								  {type : 'min', name: '最小值'}    
+								]    
+							  }    
+							},
+							{  
+							  name:'query数量',
+							  type:'line',  
+							  data:[3861,4333,3627,4672,4976,3805,3258,4689,3567,3656,3988,3437,3242,3267,3249,3437,3055,2893,2575,2393,1918,5843,9172,11185],     
+							  markLine : {    
+								data : [    
+								  {type : 'average', name: '平均值'}    
+								]    
+							  },       
+							  markPoint : {    
+								data : [    
+								  {type : 'max', name: '最大值'},    
+								  {type : 'min', name: '最小值'}    
+								]    
+							  }    
+							}  							
+						  ]  
+						}, 
+						{  
+						  title:{    
+							text:'20160524（周二）每小时搜索统计',    
+							subtext:'by顾全'    
+						  },    
+						  series : [  
+							{  
+							  name:'view数量',
+							  type:'line',  
+							  data:[159,127,79,53,93,64,87,100,170,275,181,244,243,230,205,218,198,142,130,144,148,257,189,186],     
+							  markLine : {    
+								data : [    
+								  {type : 'average', name: '平均值'}    
+								]    
+							  },       
+							  markPoint : {    
+								data : [    
+								  {type : 'max', name: '最大值'},    
+								  {type : 'min', name: '最小值'}    
+								]    
+							  }    
+							}, 
+							{  
+							  name:'query数量',
+							  type:'line',  
+							  data:[7831,3611,2967,2829,3237,3623,2897,2732,3021,2762,2306,2481,2722,2337,3547,3375,2771,2680,2444,2790,1928,3696,4432,3908],    
+							  markLine : {    
+								data : [    
+								  {type : 'average', name: '平均值'}    
+								]    
+							  },        
+							  markPoint : {    
+								data : [    
+								  {type : 'max', name: '最大值'},    
+								  {type : 'min', name: '最小值'}    
+								]    
+							  }    
+							}  							
+						  ]  
+						}, 
+						{  
+						  title:{    
+							text:'20160525（周三）每小时搜索统计',    
+							subtext:'by顾全'    
+						  },    
+						  series : [  
+							{  
+							  name:'view数量',
+							  type:'line',  
+							  data:[113,93,117,85,94,108,88,172,153,165,170,388,237,190,187,216,219,246,96,113,128,120,171,195],     
+							  markLine : {    
+								data : [    
+								  {type : 'average', name: '平均值'}    
+								]    
+							  },       
+							  markPoint : {    
+								data : [    
+								  {type : 'max', name: '最大值'},    
+								  {type : 'min', name: '最小值'}    
+								]    
+							  }    
+							}, 
+							{  
+							  name:'query数量',
+							  type:'line',  
+							  data:[3671,3429,2085,3079,2590,3012,3249,2733,3430,2561,3371,2725,2897,2531,2500,3029,2961,2734,2075,1765,2309,3973,4662,4393],    
+							  markLine : {    
+								data : [    
+								  {type : 'average', name: '平均值'}    
+								]    
+							  },        
+							  markPoint : {    
+								data : [    
+								  {type : 'max', name: '最大值'},    
+								  {type : 'min', name: '最小值'}    
+								]    
+							  }    
+							}  							
+						  ]  
+						}						
+					]  
+				};  
+
+					myChart1.setOption(option1);
+
+
+
+					
+					
+					
+
+				var myChart2 = echarts.init(document.getElementById('main2'),'macarons');
+				
+				var	option2 = {
+						title: {
+							x: 'center',
+							text: '4-21前十位搜索关键词',							
+						},
+						tooltip: {
+							trigger: 'item'
+						},
+						toolbox: {
+							show: true,
+							feature: {
+								dataView: {show: true, readOnly: false},
+								restore: {show: true},
+								saveAsImage: {show: true}
+							}
+						},
+						calculable: true,
+						grid: {
+							borderWidth: 0,
+							y: 80,
+							y2: 60
+						},
+						xAxis: [
+							{
+								type: 'category',
+								show: false,
+								data: ['隆鼻', '隆胸', '祛斑', '玻尿酸', '整形医院', '割双眼皮', '瘦脸针', '开眼角', '微整形', '整形美容']
+							}
+						],
+						yAxis: [
+							{
+								type: 'value',
+								show: false
+							}
+						],
+						series: [
+							{
+								name: '关键词搜索次数统计',
+								type: 'bar',
+								itemStyle: {
+									normal: {
+										color: function(params) {
+											// build a color map as your need.
+											var colorList = [
+											   '#60C0DD','#B5C334','#FCCE10','#E87C25','#27727B',
+											   '#FE8463','#9BCA63','#FAD860','#F3A43B',
+											   '#D7504B','#C6E579','#F4E001','#F0805A','#26C0C0'
+											];
+											return colorList[params.dataIndex]
+										},
+										barBorderRadius: 10,
+										label: {
+											show: true,
+											position: 'top',
+											formatter: '{b}\n{c}'
+										}
+									},
+									emphasis: {barBorderRadius: 10}
+								},
+								data: [ 17834,11344,6871, 6484, 5095, 4863, 4016,2631, 2385,2178 ],
+								markPoint: {
+									tooltip: {
+										trigger: 'item',
+										backgroundColor: 'rgba(0,0,0,0)',
+										formatter: function(params){
+											return '<img src="' 
+													+ params.data.symbol.replace('image://', '')
+													+ '"/>';
+										}
+									},
+									data: [
+										{xAxis:0, y: 350, name:'Line', symbolSize:20, symbol: 'image://../asset/ico/折线图.png'},
+										{xAxis:1, y: 350, name:'Bar', symbolSize:20, symbol: 'image://../asset/ico/柱状图.png'},
+										{xAxis:2, y: 350, name:'Scatter', symbolSize:20, symbol: 'image://../asset/ico/散点图.png'},
+										{xAxis:3, y: 350, name:'K', symbolSize:20, symbol: 'image://../asset/ico/K线图.png'},
+										{xAxis:4, y: 350, name:'Pie', symbolSize:20, symbol: 'image://../asset/ico/饼状图.png'},
+										{xAxis:5, y: 350, name:'Radar', symbolSize:20, symbol: 'image://../asset/ico/雷达图.png'},
+										{xAxis:6, y: 350, name:'Chord', symbolSize:20, symbol: 'image://../asset/ico/和弦图.png'},
+										{xAxis:7, y: 350, name:'Force', symbolSize:20, symbol: 'image://../asset/ico/力导向图.png'},
+										{xAxis:8, y: 350, name:'Map', symbolSize:20, symbol: 'image://../asset/ico/地图.png'},
+										{xAxis:9, y: 350, name:'Gauge', symbolSize:20, symbol: 'image://../asset/ico/仪表盘.png'},
+										{xAxis:10, y: 350, name:'Funnel', symbolSize:20, symbol: 'image://../asset/ico/漏斗图.png'},
+									],
+									effect: {
+										show: true,
+										sclaesize:2,
+										color:'pink'
+									},
+									data: [
+										{type : 'max', y: 90},
+										{value:11344,xAxis: '隆胸', y: 190},
+										{value:6871,xAxis: '祛斑', y: 270}
+									]	
+								}
+							}
+						]
+					};
+						
+						myChart2.setOption(option2);
+
+
+
+						
+						
+		
+				var myChart3 = echarts.init(document.getElementById('main3'),'macarons');	
+					
+				var	option3 = {
+						title: {
+							x: 'left',
+							text: '搜索20次以上且浏览时间超过40分钟的客户',	
+							subtext:'纵轴为客户宽带账号'
+						},					
+						tooltip : {
+							trigger: 'axis',
+							axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+								type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+							}
+						},
+						legend: {
+							data:['浏览时长:分钟','搜索频次' ]
+						},
+						toolbox: {
+							show : true,
+							feature : {
+								dataView : {show: true, readOnly: false},
+								magicType : {show: true, type: ['line', 'bar']},
+								restore : {show: true},
+								saveAsImage : {show: true}
+							}
+						},
+						calculable : true,
+						xAxis : [
+							{
+								type : 'value',
+								max : 150
+							}
+						],
+						yAxis : [
+							{
+								type : 'category',
+								axisTick : {show: false},
+								data : ['0395c3daebb57b210e6b9566b24f8c58', '061a6e821d194d86763190115ceb7815', '22fbbd70ab145dc73f8725f91c14cf0f', '2c5b1bb271dd56e8e3c701f4a2d26a99',
+										'3cc1ad07f5e4e4bef18a23803754b099', '70f6888b1801e954f6e9817af53692f3', '806e1ca7029ac1c48f1fe2068ff26a13', '8efbd7a77ac42ce37259c071d9d9b4d9',
+										'9cc123e8abea452b2275f85b313f8e74', 'a5866ca4ff4cb9525b784e5064fd2df8', 'a8daaaf82c0e3e4a9d563f7451f6ccec', 'cf54407e8f70085bbd5fb9d9ac1aceff',
+										'dbd8b2243f0826adb6a537937686dc35', 'e08a2a10f6dff9d826700cfad3393de7', 'e387084e42e278524820b08942a0ecbe', 'f3bd38f4a6406a92121bbbceb596d4cc',
+										'fd948476af2a565e6966c218f120aa17']
+							}
+						],
+						series : [
+
+							{
+								name:'搜索频次',
+								type:'bar',
+								stack: '总量',
+								barWidth : 15,
+								itemStyle: {normal: {
+									label : {show: true}
+								}},
+								data:[26, 101,  50, 326,  23,  70,  43,  21,  23,  37,  20,  33,  43,  25,  33,  99,  43]
+							},
+							{
+								name:'浏览时长:分钟',
+								type:'bar',
+								stack: '总量',
+								itemStyle: {normal: {
+									label : {show: true, position: 'left'}
+								}},
+								data:[-43,-55,-49,-59,-59,-48,-51,-50,-42,-49,-46,-40,-42,-59,-47,-45,-57]
+							}
+						]
+						};
+    
+						myChart3.setOption(option3);
+		}
+
+	);
+	
+</script>
+
+</body>
